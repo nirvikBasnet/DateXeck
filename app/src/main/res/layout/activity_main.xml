@@ -6,25 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/reduceMeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="452dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.624"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="452dp"
+        android:layout_width="342dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#E18335"
+        android:gravity="center"
         android:text="Reduce Me:"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -39,51 +34,90 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="393dp"
+        app:layout_constraintGuide_begin="351dp"
         app:layout_constraintGuide_percent="0.97" />
 
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="400dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="341dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rectangle"
-        android:gravity=""
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center"
         android:text="Total Items : "
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="264dp"
+        android:layout_width="342dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/colorAccent"
+        android:gravity="center"
         android:text="Expired : "
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/totalItemsTextView"
         android:layout_width="8dp"
         android:layout_height="21dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
         android:text="5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/expiredItemsTextView"
+        android:layout_width="24dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="216dp"
+        android:text="6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.746"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/listButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="68dp"
+        android:text="List"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/listButton"
+        app:layout_constraintTop_toTopOf="@+id/listButton" />
+
+    <TextView
+        android:id="@+id/reduceMeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
