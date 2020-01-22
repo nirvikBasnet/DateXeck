@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context="com.example.datexheck.HomeFragment">
 
     <TextView
         android:id="@+id/textView8"
@@ -14,7 +14,7 @@
         android:background="@drawable/rectangle"
         android:backgroundTint="#E18335"
         android:gravity="center"
-        android:text="Reduce Me:"
+        android:text="@string/reduce_me"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -46,7 +46,7 @@
         android:background="@drawable/rectangle"
         android:backgroundTint="@color/colorPrimaryDark"
         android:gravity="center"
-        android:text="Total Items : "
+        android:text="@string/total_items"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
         android:background="@drawable/rectangle"
         android:backgroundTint="@color/colorAccent"
         android:gravity="center"
-        android:text="Expired : "
+        android:text="@string/expired"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -71,7 +71,7 @@
         android:layout_height="21dp"
         android:layout_marginTop="68dp"
         android:gravity="center"
-        android:text="5"
+        android:text="@string/_5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.738"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -82,7 +82,7 @@
         android:layout_width="24dp"
         android:layout_height="37dp"
         android:layout_marginTop="216dp"
-        android:text="6"
+        android:text="@string/_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:text="10"
+        android:text="@string/_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="@+id/textView8"
