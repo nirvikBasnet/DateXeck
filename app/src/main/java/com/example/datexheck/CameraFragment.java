@@ -41,7 +41,7 @@ public class CameraFragment extends Fragment {
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                Intent intent = new Intent(getActivity(),ScannerActivity.class);
                 startActivity(intent);
             }
         });
