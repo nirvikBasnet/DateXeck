@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.datexheck.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +33,7 @@ public class CameraFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
 
-        scanButton = view.findViewById(R.id.scanButton);
+        scanButton = view.findViewById(R.id.toListButton);
 
 
         scanButton.setOnClickListener(new View.OnClickListener() {

@@ -19,4 +19,21 @@
     <string name="this_is_list">This Is List</string>
 
 
+    <string name="title_activity_add_product_scrolling">New Product</string>
+    <string name="title_activity_monster_detail_scrolling">View Products</string>
+    <string name="monster_name_is_required">Name is required</string>
+    <string name="create_monster_failed_message">We couldn\'t create your product, try again</string>
+    <string name="create_monster_succeeded_message">Your product was created</string>
+
+    <string name="type_your_monster_s_name_add_monster_scrolling_activity">Type your Product Name</string>
+    <string name="add_a_short_description_add_monster_scrolling_activity">Add Product Exp Date</string>
+
+    <string name="add_button_label_add_monster_scrolling_activity">Add</string>
+    <string name="cancel_button_label_add_monster_activity">Cancel</string>
+    <string name="overall_rating">Overall rating</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

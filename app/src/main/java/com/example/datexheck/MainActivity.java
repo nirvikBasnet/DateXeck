@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
+
                     switch (item.getItemId()){
                         case R.id.nav_list:
                             selectedFragment = new ListFragment();
