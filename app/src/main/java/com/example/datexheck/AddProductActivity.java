@@ -3,31 +3,38 @@ package com.example.datexheck;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.datexheck.entities.Product;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 
 public class AddProductActivity extends AppCompatActivity {
 
 
-    Product product = new Product();
+
 
 
 
 
     public static final String TAG = "AddProductActivity";
+    EditText productName;
+    EditText productBarcode;
+    TextView expDate;
     public Button selectDate;
     public DatePickerDialog.OnDateSetListener dateSetListener;
     TextView showDate;
     String date;
+    Product product;
 
     public String getDate() {
         return date;
@@ -45,6 +52,9 @@ public class AddProductActivity extends AppCompatActivity {
 
         selectDate = findViewById(R.id.selectDateButton);
         showDate = findViewById(R.id.showDate);
+        productName = findViewById(R.id.productNameEditText);
+        productBarcode=findViewById(R.id.barcodeEditText);
+        expDate=findViewById(R.id.showDate);
 
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,4 +86,32 @@ public class AddProductActivity extends AppCompatActivity {
             }
         };
     }
+
+    private void add(View v) {
+        //get values from the layout
+        String product_name = productName.getText().toString();
+        Integer product_barcode = Integer.valueOf(productBarcode.getText().toString());
+        String product_expDate = expDate.getText().toString();
+
+        if(product_name.isEmpty()) {
+            Snackbar.make(v, getString(R.string.monster_name_is_required), Snackbar.LENGTH_SHORT).show();
+            return;
+        }
+        product = new Product();
+        product.setName(product_name);
+        product.setBarcode(product_barcode);
+        product.setExpDate(product_expDate);
+
+        //set the intent to return the product to the caller Activity
+        Intent goingBack = new Intent();
+        goingBack.putExtra(Product.PRODUCT_KEY, product);
+        setResult(RESULT_OK, goingBack);
+        finish();
+
+    }
+
+    private void cancel(View v){
+        finish();
+    }
+
 }

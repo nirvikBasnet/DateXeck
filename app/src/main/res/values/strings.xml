@@ -34,6 +34,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_product_succeeded_message">Your Product Added</string>
+    <string name="create_product_failed_message">Something is not right!!</string>
 
 
 </resources>

@@ -5,6 +5,8 @@ import com.example.datexheck.AddProductActivity;
 import java.io.Serializable;
 
 public class Product implements Serializable {
+
+    public static final String PRODUCT_KEY = "product_key";
     public long id;
     public String name;
     public String expDate;
@@ -19,6 +21,10 @@ public class Product implements Serializable {
         this.name = name;
         this.expDate = expDate;
         this.barcode = barcode;
+    }
+
+    public Product() {
+
     }
 
 
