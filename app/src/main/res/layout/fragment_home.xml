@@ -38,7 +38,7 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/totalItemTextView"
         android:layout_width="0dp"
         android:layout_height="117dp"
         android:layout_marginStart="4dp"
@@ -63,11 +63,12 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/totalItemTextView" />
 
     <TextView
         android:id="@+id/totalItemsTextView"
         android:layout_width="8dp"
+
         android:layout_height="21dp"
         android:layout_marginTop="68dp"
         android:gravity="center"
@@ -98,7 +99,6 @@
         app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

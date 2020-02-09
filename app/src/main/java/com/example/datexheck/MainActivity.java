@@ -14,9 +14,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView totalItems;
-    Button listButton;
-    Button notificationButton;
 
 
 

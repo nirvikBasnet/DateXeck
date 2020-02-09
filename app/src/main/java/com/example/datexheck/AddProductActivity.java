@@ -13,7 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.datexheck.entities.Product;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
@@ -35,6 +34,8 @@ public class AddProductActivity extends AppCompatActivity {
     TextView showDate;
     String date;
     Product product;
+    Button addButton;
+    Button cancelButton;
 
     public String getDate() {
         return date;
@@ -55,6 +56,22 @@ public class AddProductActivity extends AppCompatActivity {
         productName = findViewById(R.id.productNameEditText);
         productBarcode=findViewById(R.id.barcodeEditText);
         expDate=findViewById(R.id.showDate);
+        addButton = findViewById(R.id.addProductButton);
+        cancelButton=findViewById(R.id.cancelButton);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add(v);
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancel(v);
+            }
+        });
 
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
