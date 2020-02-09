@@ -1,5 +1,9 @@
 package com.example.datexheck.entities;
 
+import android.content.ContentValues;
+
+import com.example.datexheck.database.ItemsTable;
+
 import java.util.UUID;
 
 public class DataItem {
@@ -65,6 +69,22 @@ public class DataItem {
         this.sortPosition = sortPosition;
     }
 
+
+    public ContentValues toValues(){
+        ContentValues values = new ContentValues();
+
+        values.put(ItemsTable.COLUMN_ID, itemId);
+        values.put(ItemsTable.COLUMN_NAME, itemName);
+        values.put(ItemsTable.COLUMN_EXPDATE, itemExpDate);
+        values.put(ItemsTable.COLUMN_BARCODE, itemBarcode);
+        values.put(ItemsTable.COLUMN_POSITION, sortPosition);
+
+        return values;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "DataItem{" +
@@ -75,4 +95,6 @@ public class DataItem {
                 ", sortPosition=" + sortPosition +
                 '}';
     }
+
+
 }

@@ -2,12 +2,11 @@ package com.example.datexheck.recyclerview;
 
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +21,7 @@ import java.util.List;
 
 public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHolder> {
 
+    public static final String ITEM_ID_KEY = "item_id_key";
     private List<DataItem> mItems;
     private Context mContext;
 
@@ -47,16 +47,19 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHo
             holder.expItemTextView.setText(item.getItemExpDate());
 
 
-        //when user selects
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // Toast.makeText(mContext,"You Selected " + item.getItemName(),Toast.LENGTH_SHORT).show();
-                String itemId = item.getItemId();
-
-
-            }
-        });
+//        //when user selects
+//        holder.mView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               // Toast.makeText(mContext,"You Selected " + item.getItemName(),Toast.LENGTH_SHORT).show();
+//                String itemId = item.getItemId();
+//                Intent intent = new Intent (mContext, DetailActivity.class);
+//                intent.putExtra(ITEM_ID_KEY,itemId);
+//                mContext.startActivity(intent);
+//
+//
+//            }
+//        });
 
         holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

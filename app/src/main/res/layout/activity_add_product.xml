@@ -36,30 +36,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/productDescriptionEditText"
-        android:layout_width="321dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Product Description"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.424"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/productNameEditText" />
-
-    <EditText
         android:id="@+id/barcodeEditText"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="335dp"
+        android:layout_height="59dp"
         android:ems="10"
         android:hint="Product Barcode"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/productDescriptionEditText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/productDescriptionEditText"
-        app:layout_constraintTop_toBottomOf="@+id/productDescriptionEditText" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/productNameEditText" />
 
     <TextView
         android:id="@+id/textView3"
@@ -107,8 +92,8 @@
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="276dp"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addProductButton" />
