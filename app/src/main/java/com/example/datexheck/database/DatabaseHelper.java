@@ -3,6 +3,7 @@ package com.example.datexheck.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -79,11 +80,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     public Cursor getAllData(){
-        db = this.getReadableDatabase();
+        db = this.getWritableDatabase();
 
-        Cursor res = db.rawQuery("select * from " + TABLE_ITEMS ,null);
+        Cursor res = db.rawQuery("select * from "+ TABLE_ITEMS ,null);
 
         return res;
+
+    }
+
+    public Boolean updateData(String id, String name, String expDate, String barcode){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_ID,id);
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_EXPDATE, expDate);
+        values.put(COLUMN_BARCODE, barcode);
+
+        db.update(TABLE_ITEMS, values, "itemsId = ?", new String[]{id} );
+
+
+        return true;
+    }
+
+    public Integer deleteData(String id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete(TABLE_ITEMS,"itemsId = ?",new String[]{id});
+
 
     }
 

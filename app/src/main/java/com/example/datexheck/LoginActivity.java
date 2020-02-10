@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity  {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                 Intent intent = new Intent(getApplicationContext(),AddProductActivity.class);
+                 Intent intent = new Intent(getApplicationContext(),ListExample.class);
                  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                  startActivity(intent);
 
