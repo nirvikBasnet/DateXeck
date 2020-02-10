@@ -2,7 +2,6 @@ package com.example.datexheck.recyclerview;
 
 
 import android.content.Context;
-import android.content.Intent;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,85 +9,80 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.datexheck.ListActivity;
 import com.example.datexheck.R;
-import com.example.datexheck.entities.DataItem;
+import com.example.datexheck.entities.Product;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHolder> {
+public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.DatabaseViewHolder> {
 
-    public static final String ITEM_ID_KEY = "item_id_key";
-    private List<DataItem> mItems;
-    private Context mContext;
 
-    public DataItemAdapter(Context context, List<DataItem> items) {
-        this.mContext = context;
-        this.mItems = items;
+    Context context;
+
+    ArrayList<Product> objProductClassArrayList;
+
+
+
+
+    public DataItemAdapter(Context context, ArrayList<Product> objProductClassArrayList) {
+        this.context = context;
+        this.objProductClassArrayList=objProductClassArrayList;
+
     }
+
+
+    @NonNull
+    @Override
+    public DatabaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View singleRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list,parent,false);
+        return new DatabaseViewHolder(singleRow);
+    }
+
+
+
 
     @Override
-    public DataItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View itemView = inflater.inflate(R.layout.list_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(itemView);
-        return viewHolder;
+    public void onBindViewHolder( DatabaseViewHolder holder, int position) {
+
+        Product objProduct = objProductClassArrayList.get(position);
+        holder.nameTextView.setText(objProduct.getProductName());
+        holder.expiryDateTextView.setText(objProduct.getProductExpDate());
+
+
     }
 
-    @Override
-    public void onBindViewHolder(DataItemAdapter.ViewHolder holder, int position) {
-        final DataItem item = mItems.get(position);
 
 
-            holder.tvName.setText(item.getItemName());
-            holder.expItemTextView.setText(item.getItemExpDate());
 
-
-//        //when user selects
-//        holder.mView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//               // Toast.makeText(mContext,"You Selected " + item.getItemName(),Toast.LENGTH_SHORT).show();
-//                String itemId = item.getItemId();
-//                Intent intent = new Intent (mContext, DetailActivity.class);
-//                intent.putExtra(ITEM_ID_KEY,itemId);
-//                mContext.startActivity(intent);
-//
-//
-//            }
-//        });
-
-        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(mContext,"You Long Selected " + item.getItemName(),Toast.LENGTH_SHORT).show();
-                return false;
-
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return objProductClassArrayList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class DatabaseViewHolder extends  RecyclerView.ViewHolder
+    {
+        TextView nameTextView,expiryDateTextView;
 
-        public TextView tvName;
-        public TextView expItemTextView;
-        public View mView;
-        public ViewHolder(View itemView) {
+        public DatabaseViewHolder(@NonNull View itemView) {
             super(itemView);
+            nameTextView= itemView.findViewById(R.id.itemNameView);
+            expiryDateTextView=itemView.findViewById(R.id.expItemTextView);
 
-            tvName =  itemView.findViewById(R.id.itemNameText);
-            expItemTextView = itemView.findViewById(R.id.expItemTextView);
-            mView = itemView;
+
+
+
         }
-
     }
+
+
+
 }
 

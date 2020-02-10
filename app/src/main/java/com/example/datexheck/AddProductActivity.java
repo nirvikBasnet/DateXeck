@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.datexheck.database.DataSource;
+
 import com.example.datexheck.database.DatabaseHelper;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -55,6 +55,8 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
+        dbHelper = new DatabaseHelper(this);
+
 
         selectDate = findViewById(R.id.selectDateButton);
         showDate = findViewById(R.id.showDate);
@@ -68,14 +70,10 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                boolean isInserted = dbHelper.insertData(productName.getText().toString(),expDate.getText().toString(),Integer.valueOf(productBarcode.getText().toString()));
-                if(isInserted=true){
-                    Toast.makeText(AddProductActivity.this,"Data Inserted",Toast.LENGTH_SHORT).show();
+
+             dbHelper.insertData(productName.getText().toString(),expDate.getText().toString(),Integer.valueOf(productBarcode.getText().toString()));
 
 
-
-                }else
-                    Toast.makeText(AddProductActivity.this,"Data not Inserted",Toast.LENGTH_SHORT).show();
 
             }
         });

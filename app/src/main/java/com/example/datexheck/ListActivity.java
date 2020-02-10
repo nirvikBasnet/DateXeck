@@ -1,50 +1,73 @@
 package com.example.datexheck;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.database.Cursor;
 import android.os.Bundle;
-
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.datexheck.database.DataSource;
+
+
 import com.example.datexheck.database.DatabaseHelper;
-import com.example.datexheck.entities.DataItem;
+
+
+import com.example.datexheck.entities.Product;
 
 import com.example.datexheck.recyclerview.DataItemAdapter;
-import com.example.datexheck.sample.SampleDataProvider;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 
 
 public class ListActivity extends AppCompatActivity {
-    DatabaseHelper myDb;
-    TextView tvOut;
-    List<DataItem> dataItemList = SampleDataProvider.dataItemList;
-    List<String> itemNames = new ArrayList<>();
+
 
     FloatingActionButton addButton;
+    RecyclerView recyclerView;
+    ArrayList<Product> objProductClass;
+    String expDate,productName;
+    Integer id,barcode;
+    DatabaseHelper myDb;
+    Cursor c;
 
-    DataSource mDataSource;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+
+
+
+
+        objProductClass = new ArrayList<>();
+
+
+
+
+
+
+
+
+
+
+
+
         addButton=findViewById(R.id.floatingActionButton);
+        recyclerView = findViewById(R.id.rvItems);
+        objProductClass = new ArrayList<>();
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager((ListActivity.this));
+        recyclerView.setLayoutManager(layoutManager);
+
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,43 +78,34 @@ public class ListActivity extends AppCompatActivity {
         });
 
 
-        mDataSource = new DataSource(this);
-        mDataSource.open();
-        mDataSource.seedDatabase(dataItemList);
+        myDb = new DatabaseHelper(this);
 
-        Toast.makeText(this,"Database acquired!", Toast.LENGTH_SHORT).show();
+        c=myDb.getAllData();
+
+        if (c.getCount()>0){
+            if (c.moveToNext()){
+                do{
+
+                    id=c.getInt(0);
+                    productName=c.getString(1);
+                    expDate=c.getString(2);
+                    barcode=c.getInt(3);
+
+                    Product pr= new Product(id,productName,expDate,barcode);
+                    objProductClass.add(pr);
 
 
+                }while(c.moveToNext());
+            }
+        }
 
+        DataItemAdapter my = new DataItemAdapter(this,objProductClass);
+        recyclerView.setAdapter(my);
 
-
-//        Collections.sort(dataItemList, new Comparator<DataItem>() {
-//            @Override
-//            public int compare(DataItem o1, DataItem o2) {
-//                return o1.getItemName().compareTo(o2.getItemName());
-//            }
-//        });
-
-        List<DataItem> listFromDB = mDataSource.getAllItems();
-        DataItemAdapter adapter = new DataItemAdapter(this, listFromDB);
-
-        //binding
-
-        RecyclerView recyclerView = findViewById(R.id.rvItems);
-        recyclerView.setAdapter(adapter);
 
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mDataSource.close();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mDataSource.open();
-    }
+
 }

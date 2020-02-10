@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.datexheck.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,11 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             };
-
-
-
-
-
 
 
 }
