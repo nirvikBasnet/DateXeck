@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">mitiHerum</string>
+    <string name="add">Jod</string>
+    <string name="add_products">Saman Joda</string>
+    <string name="already_signed_up">bhai sakyo</string>
+    <string name="cancel">nai</string>
+    <string name="deleteBtn">kata</string>
+    <string name="expiry_date">Bigrine Miti</string>
+    <string name="forgot_password">Password Birso</string>
+    <string name="go_to_insertbtn">insert ma jau</string>
+    <string name="home_btnNav">ghar</string>
+    <string name="list_btnNav">list haru</string>
+    <string name="name">naam</string>
+    <string name="view_all_product">sabai saman</string>
+
+    <string name="total_items">sabai saman</string>
+</resources>

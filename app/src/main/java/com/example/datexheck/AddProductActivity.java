@@ -31,6 +31,10 @@ public class AddProductActivity extends AppCompatActivity {
     public static final String TAG = "AddProductActivity";
     EditText productName;
     EditText productBarcode;
+    String st;
+
+
+
     TextView expDate;
     public Button selectDate;
     public DatePickerDialog.OnDateSetListener dateSetListener;
@@ -66,12 +70,39 @@ public class AddProductActivity extends AppCompatActivity {
         addButton = findViewById(R.id.addProductButton);
         cancelButton=findViewById(R.id.cancelButton);
 
+        st=getIntent().getExtras().getString("Value");
+        productBarcode.setText(st);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String name = productName.getText().toString().trim();
+                Long barcode = Long.valueOf(productBarcode.getText().toString().trim());
+                String expDate2 = showDate.getText().toString().trim();
 
-             dbHelper.insertData(productName.getText().toString(),expDate.getText().toString(),Integer.valueOf(productBarcode.getText().toString()));
+                if(name.isEmpty()){
+                    Toast.makeText(AddProductActivity.this, "Please Enter Name of the product!", Toast.LENGTH_SHORT).show();
+                }
+                else if (barcode.toString().isEmpty()){
+                    Toast.makeText(AddProductActivity.this, "Please Enter Product Barcode!", Toast.LENGTH_SHORT).show();
+                }else if(expDate2.isEmpty()){
+
+                    Toast.makeText(AddProductActivity.this, "Please Enter Expiry Date Barcode!", Toast.LENGTH_SHORT).show();
+
+
+
+                }
+                else{
+
+
+                    dbHelper.insertData(productName.getText().toString(), expDate.getText().toString(), Long.valueOf((productBarcode.getText().toString())));
+
+                    Toast.makeText(AddProductActivity.this, "Data Addeded Succesfully!!", Toast.LENGTH_SHORT).show();
+
+                }
+
+                openList();
 
 
 
@@ -108,7 +139,7 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
-                 date = month + "/" + day + "/" + year;
+                 date = (month+1) + "/" + day + "/" + year; //as january is indexed at 0
 
                 showDate.setText(date);
 
@@ -122,4 +153,12 @@ public class AddProductActivity extends AppCompatActivity {
         finish();
     }
 
+
+
+    public void openList(){
+
+        Intent intent = new Intent(this,ListActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }

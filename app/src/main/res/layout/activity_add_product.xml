@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.datexheck.AddProductActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -24,55 +25,64 @@
 
     <EditText
         android:id="@+id/productNameEditText"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Product Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.579"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/barcodeEditText"
-        android:layout_width="335dp"
-        android:layout_height="59dp"
         android:ems="10"
-        android:hint="Product Barcode"
+        android:hint="@string/product_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/productNameEditText" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/barcodeEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:ems="10"
+        android:hint="@string/product_barcode"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/productNameEditText"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
-        android:text="Expiry Date :"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/expiry_date"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/barcodeEditText" />
 
     <Button
         android:id="@+id/selectDateButton"
-        android:layout_width="199dp"
+        android:layout_width="183dp"
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:text="select date"
+        android:gravity="center"
+        android:text="@string/select_date"
+        app:layout_constraintBottom_toTopOf="@+id/addProductButton"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/showDate" />
+        app:layout_constraintStart_toEndOf="@+id/showDate"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/showDate"
+        app:layout_constraintVertical_bias="0.244" />
 
     <TextView
         android:id="@+id/showDate"
-        android:layout_width="125dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/barcodeEditText" />
 
@@ -80,21 +90,22 @@
         android:id="@+id/addProductButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:layout_marginBottom="248dp"
+        android:backgroundTint="#4CAF50"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/selectDateButton"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/guideline5" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="276dp"
-        android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addProductButton" />
+        android:layout_height="0dp"
+        android:backgroundTint="#E91E63"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/addProductButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,40 +1,34 @@
 package com.example.datexheck;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-
-import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-
-
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.datexheck.database.DatabaseHelper;
-
-
 import com.example.datexheck.entities.Product;
 
-import com.example.datexheck.recyclerview.DataItemAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class ListActivity extends AppCompatActivity {
 
 
-    FloatingActionButton addButton;
-    RecyclerView recyclerView;
-    ArrayList<Product> objProductClass;
-    String expDate,productName;
-    Integer id,barcode;
-    DatabaseHelper myDb;
-    Cursor c;
+    DatabaseHelper userDBhelper;
+    ListView productList;
+
+
+    ArrayList<String> listItem;
+    ArrayAdapter adapter;
+
+
 
 
 
@@ -44,68 +38,57 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        productList = findViewById(R.id.display_listview);
+
+        userDBhelper= new DatabaseHelper(this);
 
 
+        listItem = new ArrayList<>();
 
 
-        objProductClass = new ArrayList<>();
-
-
-
-
-
-
-
-
-
-
-
-
-        addButton=findViewById(R.id.floatingActionButton);
-        recyclerView = findViewById(R.id.rvItems);
-        objProductClass = new ArrayList<>();
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager((ListActivity.this));
-        recyclerView.setLayoutManager(layoutManager);
-
-
-        addButton.setOnClickListener(new View.OnClickListener() {
+        viewData();
+        
+        
+        productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),AddProductActivity.class);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String text = productList.getItemAtPosition(position).toString();
+                Toast.makeText(ListActivity.this, "You Selected "+text, Toast.LENGTH_SHORT).show();//showing message when pressing list
             }
         });
-
-
-        myDb = new DatabaseHelper(this);
-
-        c=myDb.getAllData();
-
-        if (c.getCount()>0){
-            if (c.moveToNext()){
-                do{
-
-                    id=c.getInt(0);
-                    productName=c.getString(1);
-                    expDate=c.getString(2);
-                    barcode=c.getInt(3);
-
-                    Product pr= new Product(id,productName,expDate,barcode);
-                    objProductClass.add(pr);
-
-
-                }while(c.moveToNext());
-            }
-        }
-
-        DataItemAdapter my = new DataItemAdapter(this,objProductClass);
-        recyclerView.setAdapter(my);
 
 
 
     }
 
+    //method to show data in listview
+
+    private void viewData() {
+        Cursor cursor = userDBhelper.viewData();
+        
+        
+        if (cursor.getCount()==0){
+
+            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
+
+            
+        }else{
+
+            while(cursor.moveToNext()){
+
+                listItem.add(cursor.getString(1));
+
+            }
+
+            adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listItem);
+            productList.setAdapter(adapter);
+
+
+        }
+        
+        
+    }
 
 
 }

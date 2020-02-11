@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity  {
     Button signUpButton;
     EditText emailEditText ;
     EditText passwordEditText;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity  {
         signUpButton = findViewById(R.id.signUpButton);
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
+        progressBar=findViewById(R.id.progressBarLogin);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -100,14 +103,19 @@ public class LoginActivity extends AppCompatActivity  {
             passwordEditText.setError("Mimimum length of password should be 6");
         }
 
+        progressBar.setVisibility(View.VISIBLE);
+
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                 Intent intent = new Intent(getApplicationContext(),ListExample.class);
+                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                  startActivity(intent);
+
+
+                    progressBar.setVisibility(View.INVISIBLE);
 
 
 

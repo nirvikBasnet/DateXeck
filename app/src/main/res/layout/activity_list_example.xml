@@ -5,99 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFEB3B"
-    tools:context="com.example.datexheck.ListExample">
+    tools:context="com.example.datexheck.MaintenanceActivity">
 
     <Button
         android:id="@+id/showDataButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="332dp"
-        android:text="View All Product"
+        android:text="@string/view_all_product"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/idMaintainance" />
 
     <EditText
         android:id="@+id/maintainNameET"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
-        android:hint="Product Name"
+        android:hint="@string/product_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/expiryDateMaintainanceET"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+
         android:ems="10"
-        android:hint="Product Expiry Date"
-        android:inputType="textPersonName"
+        android:hint="@string/product_expiry_date"
+        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/maintainNameET" />
+        app:layout_constraintTop_toBottomOf="@+id/maintainNameET"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/barcodeMaintainance"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Product Barcode"
+        android:hint="@string/product_barcode"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expiryDateMaintainanceET" />
+        app:layout_constraintTop_toBottomOf="@+id/expiryDateMaintainanceET"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/idMaintainance"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Product id"
+        android:hint="@string/product_id"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barcodeMaintainance" />
+        app:layout_constraintTop_toBottomOf="@+id/barcodeMaintainance"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/updateBtn"
-        android:layout_width="104dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="48dp"
-        android:text="Update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/updatebtn_"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
-        app:layout_constraintStart_toEndOf="@+id/showDataButton"
-        app:layout_constraintTop_toBottomOf="@+id/idMaintainance" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showDataButton" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginBottom="140dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="Delete"
+        android:text="@string/deleteBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showDataButton" />
+        app:layout_constraintTop_toBottomOf="@+id/updateBtn" />
 
     <Button
         android:id="@+id/btnGoToAddList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_width="132dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#4CAF50"
-        android:text="Go To Insert"
+        android:text="@string/go_to_insertbtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
 

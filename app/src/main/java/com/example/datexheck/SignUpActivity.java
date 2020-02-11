@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    ProgressBar progressBar; //progressbar for signup
 
 
     EditText emailText,passwordText;
@@ -34,11 +37,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         emailText = findViewById(R.id.editTextEmailSignUp);
         passwordText = findViewById(R.id.editTextPasswordSignUp);
+        progressBar= findViewById(R.id.progressBar);
 
         signupButton= findViewById(R.id.signUpButtonSignUp);
         loginButton= findViewById(R.id.loginButtonSignUp);
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();//instance of firebase
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +64,14 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
+    //register user with firebase
+
+
     private void registerUser(){
 
         String email = emailText.getText().toString().trim();
-        String password = passwordText.getText().toString().trim();
-
+        final String password = passwordText.getText().toString().trim();
+        //validating datafields
         if(email.isEmpty()){
             emailText.setError("Email is required");
             emailText.requestFocus();
@@ -87,13 +94,25 @@ public class SignUpActivity extends AppCompatActivity {
         if(password.length()<6){
             passwordText.setError("Mimimum length of password should be 6");
         }
+
+        progressBar.setVisibility(View.VISIBLE);//setting progressbar to visible until the action is sucessful
         
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 
                 if(task.isSuccessful()){
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+                    progressBar.setVisibility(View.INVISIBLE);//setting progressbar invisible
+
+
                     Toast.makeText(SignUpActivity.this, "Your Account Created!!", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+
+
                 } else{
                     
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){

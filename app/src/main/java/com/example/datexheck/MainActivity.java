@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.datexheck.database.DatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseHelper myDB;
 
 
 
@@ -20,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        myDB = new DatabaseHelper(this);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(itemSelectedListener);
 
         HomeFragment homeFragment = new HomeFragment();
+
+
 
 
 
@@ -36,26 +44,31 @@ public class MainActivity extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
 
 
+//switching activities from buttom navigation bar
                     switch (item.getItemId()){
                         case R.id.nav_list:
-                            selectedFragment = new ListFragment();
+                            Intent intent = new Intent(MainActivity.this,ListActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
                             break;
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            Intent intent1 = new Intent(MainActivity.this,MainActivity.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent1);
+
                             break;
                         case R.id.nav_camera:
-                            selectedFragment = new CameraFragment();
+                            Intent intent3 = new Intent(MainActivity.this,ScannerActivity.class);
+                            intent3.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent3);
                             break;
-                        case R.id.nav_notification:
-                            selectedFragment = new NotificationFragment();
-                            break;
+
 
                     }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+
 
                     return true;
 

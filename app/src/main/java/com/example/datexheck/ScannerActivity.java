@@ -3,6 +3,7 @@ package com.example.datexheck;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,11 +17,11 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,10 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class ScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     private ZXingScannerView scannerView;
-    private TextView resultTextView;
+    private EditText resultTextView;
+
+
+    String st;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +41,29 @@ public class ScannerActivity extends AppCompatActivity implements ZXingScannerVi
         setContentView(R.layout.activity_scanner);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.addItemBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent intent = new Intent(getApplicationContext(),AddProductActivity.class);
+                st=resultTextView.getText().toString();
+                intent.putExtra("Value",st);
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                startActivity(intent);
+
+                finish();
+
+
+
             }
         });
 
         //init
         scannerView = findViewById(R.id.zxscan);
-        resultTextView = findViewById(R.id.resultTextView);
+        resultTextView = findViewById(R.id.resultTextEdit);
         //request permission
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.CAMERA)

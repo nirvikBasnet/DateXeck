@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.datexheck.database.DatabaseHelper;
 
-public class ListExample extends AppCompatActivity {
+public class MaintenanceActivity extends AppCompatActivity {
 
     Button btnViewAll;
     Button btnUpdate;
@@ -41,19 +41,29 @@ public class ListExample extends AppCompatActivity {
         btnGoToInsert= findViewById(R.id.btnGoToAddList);
 
 
+        //going to scanner Activity
+        btnGoToInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ScannerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
         btnViewAll = findViewById(R.id.showDataButton);
-        viewAll();
-        UpdateData();
-        DeleteData();
+        viewAll(); //viewing all data in buffer
+        UpdateData(); //updating data
+        DeleteData(); //deleting data
 
 
 
 
     }
 
-
+    //method for viewing all data
     public void viewAll(){
         btnViewAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,20 +85,21 @@ public class ListExample extends AppCompatActivity {
                     buffer.append("Name: " + res.getString(1)+'\n');
                     buffer.append("Expiry Date: " + res.getString(2)+'\n');
                     buffer.append("Barcode: " + res.getString(3)+'\n');
+                    buffer.append("\n");
 
 
                 }
 
 
                 //show data
-                showMessage("Data",buffer.toString());
+                showMessage("Products",buffer.toString());
 
 
 
             }
         });
     }
-
+        //class for buffer
     public void showMessage(String title, String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -98,7 +109,7 @@ public class ListExample extends AppCompatActivity {
 
         builder.show();
     }
-
+//data update method to update data in database
     public void UpdateData(){
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,10 +118,10 @@ public class ListExample extends AppCompatActivity {
                         expDateMaintain.getText().toString(),barcodeMaintain.getText().toString());
 
                 if(isUpdated== true){
-                    Toast.makeText(ListExample.this, "Data Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaintenanceActivity.this, "Data Updated!", Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    Toast.makeText(ListExample.this, "Data not Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaintenanceActivity.this, "Data not Updated!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -123,11 +134,11 @@ public class ListExample extends AppCompatActivity {
             public void onClick(View v) {
                 Integer deletedRows = myDb.deleteData(idMaintain.getText().toString());
                 if(deletedRows > 0){
-                    Toast.makeText(ListExample.this, "Data Sucessfully Deleted!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaintenanceActivity.this, "Data Sucessfully Deleted!", Toast.LENGTH_SHORT).show();
 
                 }else
                 {
-                    Toast.makeText(ListExample.this, "Data Not Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaintenanceActivity.this, "Data Not Updated!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
