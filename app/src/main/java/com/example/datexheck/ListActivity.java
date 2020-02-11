@@ -3,17 +3,17 @@ package com.example.datexheck;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+
 import android.widget.Toast;
 
 import com.example.datexheck.database.DatabaseHelper;
-import com.example.datexheck.entities.Product;
+
 
 import java.util.ArrayList;
 

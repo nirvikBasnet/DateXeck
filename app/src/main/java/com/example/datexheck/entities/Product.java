@@ -1,10 +1,6 @@
 package com.example.datexheck.entities;
 
-import android.content.ContentValues;
 
-import static com.example.datexheck.database.DatabaseHelper.COLUMN_BARCODE;
-import static com.example.datexheck.database.DatabaseHelper.COLUMN_EXPDATE;
-import static com.example.datexheck.database.DatabaseHelper.COLUMN_NAME;
 
 public class Product {
 
